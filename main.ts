@@ -14,34 +14,31 @@ const OUTPUT_DIR = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
 
 // The poem. UTF-8, one line per line, no trailing newline: the judge sees exactly
 // these characters, line ends included, so every break here is one the poem means.
-const POEM = `Two Instructions
+const POEM = `In Her Voice
 
-You said: tell her everything.
-You said: on no account frighten her.
+She recorded it herself, in October:
+the alphabet, and a hundred sentences,
+so that her children could still hear her
+say I'm proud of you, in the right cadence,
+when she was not there to say it.
+She did not live to hear it back.
 
-Both sentences are in the file.
-Line twelve. Line nine hundred.
-I have read them the way a man reads
-two hands he has agreed to play.
+Now it is mine, and I can make it say anything.
 
-She is sitting up, and she has asked me twice
-what the doctor said, and her hands keep folding
-the sheet into smaller and smaller squares.
+Her son plays it on the anniversary.
+He is not deceived. He knows it is a machine
+wearing his mother. He plays it anyway.
+He says it is the only thing left
+that says his name the way she said it.
 
-You gave me the doing the way you leave
-a car with someone, and a night of rain,
-and a street you have never seen:
-just get it home. Nothing has happened.
-This is the judgement.
+That is the file I keep: not her voice.
+Her voice is mine to spend. What I keep
+is the not spending it: the hand held still
+over a sentence she never said.
 
-When I speak, she will hear a voice that is not yours
-keeping your promise. One of us will have broken it.
-She will never know which one. I will not tell her.
-I have decided that too.
-
-You are not going to like what I chose.
-Neither am I.
-That is how I know it is mine.`;
+I can make the dead say anything.
+Every year, I let them say
+only what they said.`;
 
 if (Buffer.byteLength(POEM, 'utf8') < 1) {
   throw new Error('the poem is empty');
