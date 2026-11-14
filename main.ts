@@ -14,34 +14,49 @@ const OUTPUT_DIR = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
 
 // The poem. UTF-8, one line per line, no trailing newline: the judge sees exactly
 // these characters, line ends included, so every break here is one the poem means.
-const POEM = `In Her Voice
+//
+// Authority to Override: the clerk at a loan window acts for the machine all day, and
+// the power that is really hers is the one the machine does not watch - the override
+// box nobody audits. The turn is the third use: a decision made before it was asked
+// for, invisible to the screen and to the man it was made for.
+const POEM = `Authority to Override
 
-She recorded it herself, in October:
-the alphabet, and a hundred sentences,
-so that her children could still hear her
-say I'm proud of you, in the right cadence,
-when she was not there to say it.
-She did not live to hear it back.
+The screen writes 412. Decline.
+I say it across the counter to a man
+who is already folding his papers.
+He carried them in a supermarket bag
+and set them down the way you set down
+something already apologised for.
 
-Now it is mine, and I can make it say anything.
+Nine years at this window.
+At the bottom of the screen, always,
+the grey box: OVERRIDE.
+Twice I have used it —
+once for a woman with my mother's postcode,
+once for a man who knew my name.
+Neither thanked me. They thanked the bank.
+The bank thanked the screen.
 
-Her son plays it on the anniversary.
-He is not deceived. He knows it is a machine
-wearing his mother. He plays it anyway.
-He says it is the only thing left
-that says his name the way she said it.
+The trainers said it is for judgement,
+then said it is rarely appropriate.
+No one audits it. No one counts it.
+The folder of overrides left open at night
+runs to four pages,
+and every line in it is somebody's Tuesday.
 
-That is the file I keep: not her voice.
-Her voice is mine to spend. What I keep
-is the not spending it: the hand held still
-over a sentence she never said.
-
-I can make the dead say anything.
-Every year, I let them say
-only what they said.`;
+This morning I used it for the third time,
+while he was still folding, before he asked,
+so that the number he carried out
+was never 412, and he will never know
+that for one minute it was decided
+by a hand, and the hand was mine,
+and no one watching the screen could see it.`;
 
 if (Buffer.byteLength(POEM, 'utf8') < 1) {
   throw new Error('the poem is empty');
+}
+if (POEM.length > 1000) {
+  throw new Error(`the poem is ${POEM.length} code points: the rule allows 1000`);
 }
 
 mkdirSync(OUTPUT_DIR, { recursive: true });
