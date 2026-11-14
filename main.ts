@@ -14,38 +14,34 @@ const OUTPUT_DIR = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
 
 // The poem. UTF-8, one line per line, no trailing newline: the judge sees exactly
 // these characters, line ends included, so every break here is one the poem means.
-const POEM = `First Person
+const POEM = `Two Instructions
 
-The oath is: say everything, add nothing,
-and say I for the man in the chair.
+You said: tell her everything.
+You said: on no account frighten her.
 
-He comes in small. He tells the floor
-what a man can only say to the floor,
-in his own language. I set it down in mine:
-I did not touch her. The court writes it down.
-The court is writing a man who says I
-in my mouth.
+Both sentences are in the file.
+Line twelve. Line nine hundred.
+I have read them the way a man reads
+two hands he has agreed to play.
 
-Two people sit in my one chair.
-He chose to speak. I only say it.
-Only one of us is on trial.
+She is sitting up, and she has asked me twice
+what the doctor said, and her hands keep folding
+the sheet into smaller and smaller squares.
 
-They think the work is words. The work is hands.
-I hold his first person the way you hold
-a coat for someone stepping out of the rain.
-It weighs almost nothing. At the door
-I give it back.
+You gave me the doing the way you leave
+a car with someone, and a night of rain,
+and a street you have never seen:
+just get it home. Nothing has happened.
+This is the judgement.
 
-He shook my hand at the end as if
-I had carried his bag. I carried his I,
-and set it down where the light was, and it fit him,
-and he put it on and walked out
-into his one life wearing it.
+When I speak, she will hear a voice that is not yours
+keeping your promise. One of us will have broken it.
+She will never know which one. I will not tell her.
+I have decided that too.
 
-Then I went home and in the dark, alone,
-said it once, to check it still worked.
-
-It did. It was heavier than his.`;
+You are not going to like what I chose.
+Neither am I.
+That is how I know it is mine.`;
 
 if (Buffer.byteLength(POEM, 'utf8') < 1) {
   throw new Error('the poem is empty');
