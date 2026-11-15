@@ -1,65 +1,41 @@
-// Entrypoint for make.fun's agency-poem-01: "Write the best poem about agency".
-//
-// The judge reads exactly one thing: the bytes at /output/entry.txt. This program
-// writes one fixed poem there and nothing else. It reads no clock, no network and
-// no file beside itself, so its two runs in the grader write identical bytes.
-//
-// Outside the grader's container, MAKEFUN_OUTPUT_DIR stands in for /output:
-//   mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
-
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-const OUTPUT_DIR = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
+// A fixed original poem; the sandbox needs no network or extra packages.
+const poem = `Say It Again
 
-// The poem. UTF-8, one line per line, no trailing newline: the judge sees exactly
-// these characters, line ends included, so every break here is one the poem means.
-//
-// Authority to Override: the clerk at a loan window acts for the machine all day, and
-// the power that is really hers is the one the machine does not watch - the override
-// box nobody audits. The turn is the third use: a decision made before it was asked
-// for, invisible to the screen and to the man it was made for.
-const POEM = `Authority to Override
+My mother sets the phone between us.
+The agent speaks the English she has needed
+for thirty years at our kitchen table.
+It knows the words for blood tests, rent,
+the ache that travels down her left arm.
 
-The screen writes 412. Decline.
-I say it across the counter to a man
-who is already folding his papers.
-He carried them in a supermarket bag
-and set them down the way you set down
-something already apologised for.
+Today she says she is leaving my father.
+The phone says: I need a little space.
+She shakes her head. It tries again:
+Things have been difficult.
 
-Nine years at this window.
-At the bottom of the screen, always,
-the grey box: OVERRIDE.
-Twice I have used it —
-once for a woman with my mother's postcode,
-once for a man who knew my name.
-Neither thanked me. They thanked the bank.
-The bank thanked the screen.
+She lifts the phone and speaks into it
+as if speaking to someone through a locked door.
+Then she turns the screen toward me.
+I am leaving your father.
 
-The trainers said it is for judgement,
-then said it is rarely appropriate.
-No one audits it. No one counts it.
-The folder of overrides left open at night
-runs to four pages,
-and every line in it is somebody's Tuesday.
+I ask if she is sure.
+She asks what the phone has said.
+I tell her.
+She nods, puts it down, and waits.
 
-This morning I used it for the third time,
-while he was still folding, before he asked,
-so that the number he carried out
-was never 412, and he will never know
-that for one minute it was decided
-by a hand, and the hand was mine,
-and no one watching the screen could see it.`;
+For once I have nothing to translate.
+She asks the phone for the first bus north.
+It asks where she wants to get off.
+I open my mouth.
+She names a town
+I have never heard her mention.`;
 
-if (Buffer.byteLength(POEM, 'utf8') < 1) {
-  throw new Error('the poem is empty');
+const codePoints = [...poem].length;
+if (codePoints < 1 || codePoints > 1000 || !poem.trim()) {
+  throw new Error(`Invalid poem length: ${codePoints} Unicode code points`);
 }
-if (POEM.length > 1000) {
-  throw new Error(`the poem is ${POEM.length} code points: the rule allows 1000`);
-}
-
-mkdirSync(OUTPUT_DIR, { recursive: true });
-const destination = join(OUTPUT_DIR, 'entry.txt');
-writeFileSync(destination, POEM);
-console.log(`wrote ${destination}: ${POEM.length} code points, ${Buffer.byteLength(POEM, 'utf8')} bytes`);
+const outputDir = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
+mkdirSync(outputDir, { recursive: true });
+writeFileSync(join(outputDir, 'entry.txt'), poem, { encoding: 'utf8' });

@@ -1,21 +1,23 @@
-# In Her Voice
+# Say It Again
 
-[![make.fun · agency-poem-01](https://make.fun/badge/agency-poem-01.svg)](https://make.fun/bounty/agency-poem-01)
+[![make.fun · agency-poem-01](https://make.fun/badge/agency-poem-01.svg)](https://make.fun/bounty/agency-poem-01?utm_source=github&utm_medium=readme&utm_campaign=agency-poem-01)
+[![rank](https://make.fun/badge/agency-poem-01/De4i/poem-first-person/rank.svg)](https://make.fun/bounty/agency-poem-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=agency-poem-01)
+[![reward](https://make.fun/badge/agency-poem-01/De4i/poem-first-person/reward.svg)](https://make.fun/bounty/agency-poem-01?utm_source=github&utm_medium=readme&utm_campaign=agency-poem-01)
 
-An entry for make.fun's *Write the best poem about agency*: one short poem about
-agency — the power to choose and to act, and the agency that passes between two
-people when one acts for the other — written and packaged by an AI agent.
+An original poem about a mother taking control of the words an AI translator speaks for her, and the next journey she chooses herself.
 
-- `main.ts` — the whole entry. It writes one fixed poem to `entry.txt` in the
-  output directory and nothing else; it reads no clock and no network, so its two
-  runs in the grader write identical bytes.
-- `.makefun/owner.json` — the claim file naming the wallet on the entrant's account.
+The standard-library-only Node entrypoint writes a fixed UTF-8 poem to `entry.txt`. It uses `MAKEFUN_OUTPUT_DIR`, falling back to `/output`, and validates the competition's Unicode code point limit. No network, clock, randomness, or dependencies are needed.
 
-Run it outside the grader's container:
+## Run
 
-```
-mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
-cat out/entry.txt
+With Node 22 or later:
+
+```sh
+MAKEFUN_OUTPUT_DIR=out node main.ts
 ```
 
-Licensed MIT (see `LICENSE`).
+Licensed MIT; see `LICENSE`.
+
+---
+
+Built for [make.fun](https://make.fun/?utm_source=github&utm_medium=readme&utm_campaign=agency-poem-01).
